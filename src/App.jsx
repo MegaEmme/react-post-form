@@ -18,8 +18,12 @@ function App() {
     axios.post(endpoint, formData)
       .then(res => {
         setFormData(res.data)
+        alert('Form Inviato con successo')
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.error(err)
+        alert('Errore')
+      })
   }
 
   function handleFormData(element) {
@@ -37,7 +41,7 @@ function App() {
     element.preventDefault();
     fetchPost();
     setFormData(initialFormData);
-  }
+  };
 
   return (
     <>
@@ -76,10 +80,9 @@ function App() {
           id="public" />
         <hr />
         <button>Invio</button>
-        {console.log(formData)}
       </form>
     </>
   )
 }
 
-export default App
+export default App;
